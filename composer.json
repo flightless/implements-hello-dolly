@@ -1,0 +1,23 @@
+{
+    "name": "jbrinley/implements-hello-dolly",
+    "description": "We start with everyone’s favorite WordPress plugin, “Hello, Dolly”. With a dramatic wave of our hands, we speak the magical word: “Refactor!” Let’s see how far we can go.",
+    "type": "wordpress-plugin",
+    "license": "GPL-2.0",
+    "authors": [
+        {
+            "name": "Jonathan Brinley",
+            "email": "jbrinley@flightless.us"
+        }
+    ],
+    "require": {
+        "pimple/pimple": "^3.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Hello_Dolly\\": "src/"
+        }
+    },
+    "require-dev": {
+        "lucatume/wp-browser": "^1.16"
+    }
+}
