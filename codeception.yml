@@ -1,0 +1,68 @@
+actor: Tester
+paths:
+    tests: tests
+    log: tests/_output
+    data: tests/_data
+    helpers: tests/_support
+settings:
+    bootstrap: _bootstrap.php
+    colors: true
+    memory_limit: 1024M
+    lint: false
+modules:
+    config:
+        Db:
+            dsn: 'mysql:host=mysql;dbname=hello_dolly_tests'
+            user: root
+            password: password
+            dump: tests/_data/dump.sql
+        WPBrowser:
+            url: 'http://hello.tribe'
+            adminUsername: admin
+            adminPassword: password
+            adminUrl: /wp-admin
+        WPDb:
+            dsn: 'mysql:host=mysql;dbname=hello_dolly_tests'
+            user: root
+            password: password
+            dump: tests/_data/dump.sql
+            populate: true
+            cleanup: false
+            url: 'http://hello.tribe'
+            tablePrefix: wcorl_
+            checkExistence: true
+            update: true
+        WPLoader:
+            wpRootFolder: /srv/www/public/wp
+            dbName: hello_dolly_tests
+            dbHost: mysql
+            dbUser: root
+            dbPassword: password
+            wpDebug: true
+            dbCharset: utf8
+            dbCollate: ''
+            tablePrefix: wcorl_
+            domain: hello.tribe
+            adminEmail: admin@hello.tribe
+            title: 'WP Tests'
+            phpBinary: php
+            language: ''
+            configFile: tests-config.php
+            plugins:
+                - implements-hello-dolly/implements-hello-dolly.php
+            activatePlugins:
+                - implements-hello-dolly/implements-hello-dolly.php
+        WPWebDriver:
+            url: 'http://hello.tribe'
+            browser: phantomjs
+            port: 4444
+            restart: true
+            wait: 2
+            adminUsername: admin
+            adminPassword: password
+            adminUrl: /wp-admin
+        WordPress:
+            depends: WPDb
+            wpRootFolder: /srv/www/public/wp
+            adminUsername: admin
+            adminPassword: password
